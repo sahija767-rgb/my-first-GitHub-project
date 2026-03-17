@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger King - Flame-Grilled Perfection | Order Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: #FF6B35;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FF6B35" width="1200" height="800"/><circle fill="%23F7931E" cx="300" cy="200" r="150"/><circle fill="%23FFD23F" cx="900" cy="300" r="120"/><rect fill="%23FF8C42" x="600" y="500" width="200" height="100" rx="20"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Burger Showcase */
+        .showcase {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .burger-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .burger-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .burger-image {
+            height: 250px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .burger-info {
+            padding: 2rem;
+        }
+
+        .burger-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FF6B35;
+            margin: 1rem 0;
+        }
+
+        /* Deals Section */
+        .deals {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .deal-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .deals h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .deal-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stars {
+            color: #FFD23F;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Floating Order Button */
+        .floating-order {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+            cursor: pointer;
+            z-index: 1000;
+            animation: bounce 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-order:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Order Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🍔 BK</a>
+            <a href="#" class="cta-button" onclick="openModal()">Order Now</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Flame-Grilled Burgers<br>That Make You Say WOW!</h1>
+                <p>Juicy, flame-grilled perfection delivered hot & fresh. Join 10M+ satisfied customers who can't get enough.</p>
+                <a href="#" class="cta-button hero-cta" onclick="openModal()" style="font-size: 1.2rem; padding: 18px 40px;">
+                    <i class="fas fa-fire"></i> Order Now - 20% OFF First Order
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Burger Showcase -->
+    <section class="showcase">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">Our Flame-Grilled Favorites</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 4rem;">Every bite is better here</p>
+            
+            <div class="showcase-grid">
+                <div class="burger-card">
+                    <div class="burger-image">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <div class="burger-info">
+                        <h3>Whopper®</h3>
+                        <div class="price">$6.99</div>
+                        <p>100% flame-grilled beef patty topped with fresh lettuce, tomatoes, pickles, onions, and our signature mayo.</p>
+                        <a href="#" class="cta-button" style="width: 100%; margin-top: 1rem;" onclick="openModal()">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="burger-card">
+                    <div class="burger-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="burger-info">
+                        <h3>Chicken Royale</h3>
+                        <div class="price">$7.49</div>
+                        <p>Crispy chicken fillet with fresh lettuce and creamy mayo on a sesame seed bun.</p>
+                        <a href="#" class="cta-button" style="width: 100%; margin-top: 1rem;" onclick="openModal()">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="burger-card">
+                    <div class="burger-image">
+                        <i class="fas fa-cheese"></i>
+                    </div>
+                    <div class="burger-info">
+                        <h3>Cheesy Bacon</h3>
+                        <div class="price">$8.29</div>
+                        <p>Double cheese, crispy bacon, and flame-grilled beef. Pure indulgence.</p>
+                        <a href="#" class="cta-button" style="width: 100%; margin-top: 1rem;" onclick="openModal()">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Limited Time Deals -->
+    <section class="deals">
+        <div class="container">
+            <div class="deal-badge">LIMITED TIME OFFER</div>
+            <h2>🥳 MEAL DEALS FROM $9.99</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 3rem;">Burger + Fries + Drink. Save up to 30%!</p>
+            
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <h3><i class="fas fa-fire"></i> Whopper Meal</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 1rem 0;">$9.99</div>
+                    <p>Save $3.00</p>
+                </div>
+                <div class="deal-card">
+                    <h3><i class="fas fa-star"></i> Family Feast</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 1rem 0;">$24.99</div>
+                    <p>Save $8.00 - Serves 4</p>
+                </div>
+                <div class="deal-card">
+                    <h3><i class="fas fa-clock"></i> Late Night Deal</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 1rem 0;">$5.99</div>
+                    <p>Available 10PM-2AM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">Loved by Millions</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 4rem;">4.8⭐ from 1.2M+ reviews</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Best burgers ever! The Whopper is life-changing. Delivery was super fast too."</p>
+                    <strong>- Sarah K.</strong>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Flame-grilled taste you can't get anywhere else. Addicted to the fries!"</p>
+                    <strong>- Mike D.</strong>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Family loves it. Great value meal deals and always fresh."</p>
+                    <strong>- Lisa M.</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Satisfy Your Cravings?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem;">First order gets 20% OFF + Free Delivery</p>
+            <a href="#" class="cta-button" onclick="openModal()" style="font-size: 1.3rem; padding: 20px 50px;">
+                <i class="fas fa-shopping-cart"></i> ORDER NOW
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Order Button -->
+    <div class="floating-order" onclick="openModal()">
+        <i class="fas fa-shopping-bag"></i>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color: #FF6B35; margin-bottom: 1rem;">🎉 Order Confirmed!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Your flame-grilled goodness is on the way!</p>
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                <p><strong>Est. Delivery:</strong> 25-35 min</p>
+                <p><strong>Special Offer:</strong> 20% OFF applied!</p>
+            </div>
+            <a href="#" class="cta-button" style="width: 100%; margin
